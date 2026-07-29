@@ -5,14 +5,14 @@
     "url": "https://github.com/barvhaim"
   },
   "description": "Provider-neutral code security workflows for Claude Code",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "plugins": [
     {
       "name": "code-security-skills",
       "displayName": "Code Security Skills",
       "source": "./plugins/code-security-skills",
       "description": "Thirteen evidence-driven security workflows for code review, validation, remediation, and reporting",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "author": {
         "name": "barvhaim",
         "url": "https://github.com/barvhaim"

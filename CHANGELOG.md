@@ -6,6 +6,12 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-07-29
+
+### Fixed
+
+- Removed the last procedural reference that mislabeled the independent canonical contract as upstream.
+
 ## [1.0.0] - 2026-07-29
 
 ### Changed
@@ -39,7 +45,8 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 - Bundled references, schemas, deterministic Python helpers, and canonical artifact examples.
 - Apache-2.0 attribution and pinned upstream provenance.
 
-[Unreleased]: https://github.com/barvhaim/code-security-skills/compare/v1.0.0...HEAD
+[Unreleased]: https://github.com/barvhaim/code-security-skills/compare/v1.0.1...HEAD
+[1.0.1]: https://github.com/barvhaim/code-security-skills/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/barvhaim/code-security-skills/compare/v0.1.1...v1.0.0
 [0.1.1]: https://github.com/barvhaim/code-security-skills/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/barvhaim/code-security-skills/releases/tag/v0.1.0

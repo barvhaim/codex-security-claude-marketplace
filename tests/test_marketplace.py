@@ -36,13 +36,13 @@ class MarketplaceTests(unittest.TestCase):
 
         self.assertEqual(marketplace["name"], "code-security")
         self.assertEqual(marketplace["owner"]["name"], "barvhaim")
-        self.assertEqual(marketplace["version"], "1.0.0")
+        self.assertEqual(marketplace["version"], "1.0.1")
         self.assertEqual(len(marketplace["plugins"]), 1)
         entry = marketplace["plugins"][0]
         self.assertEqual(entry["name"], "code-security-skills")
         self.assertEqual(entry["name"], plugin_manifest["name"])
         self.assertEqual(entry["version"], plugin_manifest["version"])
-        self.assertEqual(plugin_manifest["version"], "1.0.0")
+        self.assertEqual(plugin_manifest["version"], "1.0.1")
         self.assertEqual(entry["author"]["name"], "barvhaim")
         self.assertEqual(plugin_manifest["author"]["name"], "barvhaim")
         self.assertEqual(entry["license"], "Apache-2.0")

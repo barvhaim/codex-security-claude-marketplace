@@ -48,7 +48,7 @@ Review every file in scope, discover plausible security findings, validate every
 
 ## Fallback output
 
-If the upstream canonical contract cannot be completed, do not fabricate or seal it. Produce an explicitly incomplete Markdown report in the scan directory containing the inspected scope, candidate dispositions, proof gaps, and exact blocker. Label coverage `partial` or `unknown`.
+If the canonical contract cannot be completed, do not fabricate or seal it. Produce an explicitly incomplete Markdown report in the scan directory containing the inspected scope, candidate dispositions, proof gaps, and exact blocker. Label coverage `partial` or `unknown`.
 
 ## Hard rules
 

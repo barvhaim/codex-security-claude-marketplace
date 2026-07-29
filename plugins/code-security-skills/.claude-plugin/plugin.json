@@ -2,7 +2,7 @@
   "name": "code-security-skills",
   "displayName": "Code Security Skills",
   "description": "Provider-neutral security workflows for code review, validation, remediation, and reporting",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": {
     "name": "barvhaim",
     "url": "https://github.com/barvhaim"
