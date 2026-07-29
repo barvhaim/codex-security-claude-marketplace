@@ -19,12 +19,10 @@ Include:
 
 ## Scope
 
-Report vulnerabilities in this repository's Claude Code adaptation, plugin packaging, helper scripts, validation logic, or generated artifacts here.
+Report vulnerabilities in this repository's skill procedures, Claude Code packaging, deterministic helpers, schemas, validation logic, or generated artifacts here.
 
-For vulnerabilities in the original Codex Security project, follow the upstream project's reporting process at [openai/codex-security](https://github.com/openai/codex-security).
-
-For vulnerabilities in Claude Code itself, use Anthropic's security reporting process.
+For vulnerabilities in the attributed upstream source, follow the reporting process for [OpenAI Codex Security](https://github.com/openai/codex-security). For vulnerabilities in Claude Code itself, use Anthropic's security reporting process.
 
 ## Security boundary
 
-This plugin provides model-guided security-review workflows. It is not a sandbox, an authorization boundary, or a guarantee that all vulnerabilities will be found. Generated findings require human review before consequential use.
+This plugin provides model-guided security-review workflows. It is not a sandbox, an authorization boundary, a hosted scanning service, or a guarantee that every vulnerability will be found. Generated findings require human review before consequential use.

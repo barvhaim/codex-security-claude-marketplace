@@ -1,0 +1,71 @@
+{
+  "$schema": "https://docs.oasis-open.org/sarif/sarif/v2.1.0/os/schemas/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "automationDetails": {
+        "id": "scan_example_001"
+      },
+      "properties": {
+        "codeSecuritySchemaVersion": "1.0",
+        "codeSecurityTargetKind": "git_worktree"
+      },
+      "results": [
+        {
+          "level": "error",
+          "locations": [
+            {
+              "message": {
+                "text": "sink"
+              },
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/extract.py"
+                },
+                "region": {
+                  "endLine": 44,
+                  "startLine": 41
+                }
+              }
+            }
+          ],
+          "message": {
+            "text": "An attacker-controlled path reaches a filesystem write without containment validation."
+          },
+          "partialFingerprints": {
+            "codeSecurity/v1": "code-security/v1:sha256:a18a904d38c1d6d96ca7a9426ea23be74961cec99dd92d03872d352ecaca5b6f"
+          },
+          "properties": {
+            "category": "path-traversal",
+            "confidence": "high",
+            "findingId": "csf_677a45ebd3f17059c36fd419",
+            "occurrenceId": "occ_f7b97d325ded7b8d03c70066",
+            "severity": "high"
+          },
+          "ruleId": "path-traversal.archive-extraction",
+          "ruleIndex": 0
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "Code Security",
+          "rules": [
+            {
+              "id": "path-traversal.archive-extraction",
+              "name": "path-traversal.archive-extraction",
+              "properties": {
+                "tags": [
+                  "security"
+                ]
+              },
+              "shortDescription": {
+                "text": "path-traversal.archive-extraction"
+              }
+            }
+          ],
+          "version": "1.0.0"
+        }
+      }
+    }
+  ],
+  "version": "2.1.0"
+}

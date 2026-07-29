@@ -8,11 +8,11 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN = ROOT / "plugins" / "codex-security-skills"
+PLUGIN = ROOT / "plugins" / "code-security-skills"
 
 
 def main() -> int:
-    with tempfile.TemporaryDirectory(prefix="claude-security-finalize-") as temporary:
+    with tempfile.TemporaryDirectory(prefix="code-security-finalize-") as temporary:
         scan_dir = Path(temporary) / "scan"
         shutil.copytree(PLUGIN / "examples" / "completed-scan", scan_dir)
         subprocess.run(

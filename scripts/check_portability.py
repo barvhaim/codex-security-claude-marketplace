@@ -2,17 +2,20 @@
 from __future__ import annotations
 
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN = ROOT / "plugins" / "codex-security-skills"
+PLUGIN = ROOT / "plugins" / "code-security-skills"
 FORBIDDEN = (
     "$codex-security:",
     "<python_command>",
     "<plugin_dir>",
     "/tmp/codex-security",
     "app://",
+    "/codex-security-skills:",
+    "codex-security-plugin",
 )
-HOST_CALLS = (
+SOURCE_HOST_CALLS = (
     "open_codex_security_workspace",
     "complete_codex_security_scan",
     "start_codex_security_deep_scan",
@@ -21,7 +24,17 @@ HOST_CALLS = (
     "update_codex_security_scan_progress",
     "fail_codex_security_scan",
     "cancel_codex_security_scan",
+    "open_code_security_triage_results",
 )
+SOURCE_HOST_PROTOCOLS = (
+    "CODE_SECURITY_WORKER_STATUS",
+    "fork_turns",
+    "interrupt_agent",
+    "reviewItemsTotal",
+    "reviewItemsCompleted",
+    "native v2",
+)
+PROVENANCE_PREFIX = "> Code Security Skills provenance:"
 
 
 def main() -> int:
@@ -32,20 +45,37 @@ def main() -> int:
         for token in FORBIDDEN:
             if token in text:
                 errors.append(f"{path.relative_to(ROOT)} contains forbidden token {token!r}")
-
-    for path in sorted((PLUGIN / "skills").glob("*/SKILL.md")):
-        for number, line in enumerate(path.read_text().splitlines(), 1):
-            for token in HOST_CALLS:
-                if token not in line:
-                    continue
-                allowed_explanation = (
-                    "Do not call Codex-specific MCP tools" in line
-                    or "Do not call Codex Security MCP tools" in line
-                )
-                if not allowed_explanation:
+        for number, line in enumerate(text.splitlines(), 1):
+            if "codex" in line.lower() and path.name not in {
+                "PROVENANCE.md",
+                "THIRD_PARTY_NOTICES.md",
+            }:
+                if not line.startswith(PROVENANCE_PREFIX):
                     errors.append(
-                        f"{path.relative_to(ROOT)}:{number} invokes or discusses unsupported host call {token}"
+                        f"{path.relative_to(ROOT)}:{number} contains non-provenance Codex wording"
                     )
+            for token in SOURCE_HOST_CALLS:
+                if token in line:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}:{number} contains source-host call {token}"
+                    )
+            for token in SOURCE_HOST_PROTOCOLS:
+                if token in line:
+                    errors.append(
+                        f"{path.relative_to(ROOT)}:{number} contains source-host protocol {token}"
+                    )
+            if re.search(r"\$[a-z][a-z0-9-]+", line):
+                errors.append(
+                    f"{path.relative_to(ROOT)}:{number} contains ambiguous source-host skill syntax"
+                )
+
+    for path in sorted((PLUGIN / "scripts").glob("*.py")):
+        text = path.read_text()
+        for token in (*SOURCE_HOST_CALLS, *SOURCE_HOST_PROTOCOLS, "completion_binding"):
+            if token in text:
+                errors.append(
+                    f"{path.relative_to(ROOT)} contains source-host runtime token {token}"
+                )
 
     symlinks = [path for path in PLUGIN.rglob("*") if path.is_symlink()]
     if symlinks:
@@ -60,7 +90,7 @@ def main() -> int:
     skill_count = len(list((PLUGIN / "skills").glob("*/SKILL.md")))
     print(
         f"Portability checks passed: {skill_count} skills, "
-        f"{len(markdown_files)} Markdown files, no unresolved host placeholders."
+        f"{len(markdown_files)} Markdown files, provider-neutral procedures."
     )
     return 0
 

@@ -7,9 +7,9 @@ import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PLUGIN = ROOT / "plugins" / "codex-security-skills"
+PLUGIN = ROOT / "plugins" / "code-security-skills"
 CLAUDE_PACKAGE = "@anthropic-ai/claude-code@2.1.220"
-EXPECTED = "Loaded 13 skills from plugin codex-security-skills default directory"
+EXPECTED = "Loaded 13 skills from plugin code-security-skills default directory"
 
 
 def main() -> int:
@@ -31,7 +31,7 @@ def main() -> int:
                 "",
                 "--no-session-persistence",
                 "--print",
-                "/codex-security-skills:threat-model Return only the skill title.",
+                "/code-security-skills:threat-model Return only the skill title.",
             ],
             cwd=ROOT,
             env=environment,

@@ -1,23 +1,23 @@
 {
-  "name": "codex-security-for-claude",
+  "name": "code-security",
   "owner": {
     "name": "barvhaim",
     "url": "https://github.com/barvhaim"
   },
-  "description": "Unofficial Claude Code ports of the open-source Codex Security skills",
-  "version": "0.1.1",
+  "description": "Provider-neutral code security workflows for Claude Code",
+  "version": "1.0.0",
   "plugins": [
     {
-      "name": "codex-security-skills",
-      "displayName": "Codex Security Skills for Claude",
-      "source": "./plugins/codex-security-skills",
-      "description": "Thirteen Apache-2.0 security workflows adapted from OpenAI Codex Security for Claude Code",
-      "version": "0.1.1",
+      "name": "code-security-skills",
+      "displayName": "Code Security Skills",
+      "source": "./plugins/code-security-skills",
+      "description": "Thirteen evidence-driven security workflows for code review, validation, remediation, and reporting",
+      "version": "1.0.0",
       "author": {
         "name": "barvhaim",
         "url": "https://github.com/barvhaim"
       },
-      "homepage": "https://github.com/openai/codex-security",
+      "homepage": "https://github.com/barvhaim/code-security-skills",
       "license": "Apache-2.0",
       "category": "security",
       "tags": [

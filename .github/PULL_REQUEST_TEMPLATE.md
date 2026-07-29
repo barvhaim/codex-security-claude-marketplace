@@ -5,7 +5,7 @@ Describe the user-visible problem and the smallest change that solves it.
 ## Compatibility boundary
 
 - [ ] Marketplace or plugin packaging
-- [ ] Claude-native workflow behavior
+- [ ] Provider-neutral workflow behavior
 - [ ] Upstream-derived content
 - [ ] Artifact contract or deterministic helper
 - [ ] Documentation only

@@ -1,5 +1,5 @@
 name: Feature request
-description: Propose a focused improvement to the Claude Code adaptation
+description: Propose a focused improvement to Code Security Skills
 title: "feat: "
 labels:
   - enhancement
@@ -24,7 +24,7 @@ body:
       label: Compatibility boundary
       options:
         - Claude Code marketplace or plugin packaging
-        - Claude-native workflow behavior
+        - Provider-neutral workflow behavior
         - Upstream synchronization
         - Artifact schema or finalizer
         - Documentation or examples
@@ -42,7 +42,7 @@ body:
     attributes:
       label: Scope checks
       options:
-        - label: I checked that this is not solely an upstream Codex Security issue.
+        - label: I checked that this is not solely an issue in the attributed upstream project.
           required: true
         - label: I understand that manifest validation does not prove model behavior.
           required: true
