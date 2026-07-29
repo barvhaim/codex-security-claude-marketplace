@@ -1,0 +1,7 @@
+{
+  "upstream": "https://github.com/openai/codex-security.git",
+  "path": "sdk/typescript/_bundled_plugin",
+  "revision": "f22d4a36f26d16287bcdfd707b369116e02a08c3",
+  "retrievedAt": "2026-07-29T05:46:56Z",
+  "license": "Apache-2.0"
+}
