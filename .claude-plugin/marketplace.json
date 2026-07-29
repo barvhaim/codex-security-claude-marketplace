@@ -1,8 +1,8 @@
 {
   "name": "njs-security-skills",
   "owner": {
-    "name": "njs2017",
-    "url": "https://github.com/njs2017"
+    "name": "barvhaim",
+    "url": "https://github.com/barvhaim"
   },
   "description": "Unofficial Claude Code ports of the open-source Codex Security skills",
   "version": "0.1.0",

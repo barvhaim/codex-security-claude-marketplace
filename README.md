@@ -36,6 +36,16 @@ Start Claude Code and add this repository as a local marketplace:
 /reload-plugins
 ```
 
+## Installation from GitHub
+
+Users with access to the private repository can add it directly:
+
+```text
+/plugin marketplace add barvhaim/codex-security-claude-marketplace
+/plugin install codex-security-skills@njs-security-skills
+/reload-plugins
+```
+
 Then invoke a skill explicitly:
 
 ```text
