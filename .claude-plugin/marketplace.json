@@ -1,21 +1,21 @@
 {
-  "name": "njs-security-skills",
+  "name": "codex-security-for-claude",
   "owner": {
     "name": "barvhaim",
     "url": "https://github.com/barvhaim"
   },
   "description": "Unofficial Claude Code ports of the open-source Codex Security skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "plugins": [
     {
       "name": "codex-security-skills",
       "displayName": "Codex Security Skills for Claude",
       "source": "./plugins/codex-security-skills",
       "description": "Thirteen Apache-2.0 security workflows adapted from OpenAI Codex Security for Claude Code",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "author": {
-        "name": "njs2017",
-        "url": "https://github.com/njs2017"
+        "name": "barvhaim",
+        "url": "https://github.com/barvhaim"
       },
       "homepage": "https://github.com/openai/codex-security",
       "license": "Apache-2.0",

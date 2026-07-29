@@ -34,12 +34,16 @@ class MarketplaceTests(unittest.TestCase):
             (PLUGIN / ".claude-plugin" / "plugin.json").read_text()
         )
 
-        self.assertEqual(marketplace["name"], "njs-security-skills")
+        self.assertEqual(marketplace["name"], "codex-security-for-claude")
         self.assertEqual(marketplace["owner"]["name"], "barvhaim")
+        self.assertEqual(marketplace["version"], "0.1.1")
         self.assertEqual(len(marketplace["plugins"]), 1)
         entry = marketplace["plugins"][0]
         self.assertEqual(entry["name"], plugin_manifest["name"])
         self.assertEqual(entry["version"], plugin_manifest["version"])
+        self.assertEqual(plugin_manifest["version"], "0.1.1")
+        self.assertEqual(entry["author"]["name"], "barvhaim")
+        self.assertEqual(plugin_manifest["author"]["name"], "barvhaim")
         self.assertEqual(entry["license"], "Apache-2.0")
         self.assertEqual(entry["source"], "./plugins/codex-security-skills")
         self.assertNotIn("..", Path(entry["source"]).parts)
@@ -97,6 +101,11 @@ class MarketplaceTests(unittest.TestCase):
             "/plugin marketplace add barvhaim/codex-security-claude-marketplace",
             readme,
         )
+        self.assertIn(
+            "/plugin install codex-security-skills@codex-security-for-claude",
+            readme,
+        )
+        self.assertNotIn("njs-" + "security-skills", readme)
         self.assertNotIn("access to the private repository", readme)
         for relative in [
             "CHANGELOG.md",

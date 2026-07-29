@@ -2,10 +2,10 @@
   "name": "codex-security-skills",
   "displayName": "Codex Security Skills for Claude",
   "description": "Unofficial Claude Code adaptation of thirteen open-source Codex Security skills",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": {
-    "name": "njs2017",
-    "url": "https://github.com/njs2017"
+    "name": "barvhaim",
+    "url": "https://github.com/barvhaim"
   },
   "homepage": "https://github.com/openai/codex-security",
   "license": "Apache-2.0",

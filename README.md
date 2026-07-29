@@ -22,7 +22,7 @@ Open Claude Code and run:
 
 ```text
 /plugin marketplace add barvhaim/codex-security-claude-marketplace
-/plugin install codex-security-skills@njs-security-skills
+/plugin install codex-security-skills@codex-security-for-claude
 /reload-plugins
 ```
 
@@ -90,7 +90,7 @@ Add a local checkout as a marketplace:
 
 ```text
 /plugin marketplace add /absolute/path/to/codex-security-claude-marketplace
-/plugin install codex-security-skills@njs-security-skills
+/plugin install codex-security-skills@codex-security-for-claude
 /reload-plugins
 ```
 
