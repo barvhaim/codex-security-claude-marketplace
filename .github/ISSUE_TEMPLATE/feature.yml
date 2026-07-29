@@ -1,0 +1,48 @@
+name: Feature request
+description: Propose a focused improvement to the Claude Code adaptation
+title: "feat: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user workflow is blocked or unnecessarily difficult?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: Describe the smallest useful behavior change.
+    validations:
+      required: true
+  - type: dropdown
+    id: boundary
+    attributes:
+      label: Compatibility boundary
+      options:
+        - Claude Code marketplace or plugin packaging
+        - Claude-native workflow behavior
+        - Upstream synchronization
+        - Artifact schema or finalizer
+        - Documentation or examples
+        - New agent-host support
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Demand or reproduction evidence
+      description: Link to examples, repeated failures, or users requesting the behavior.
+  - type: checkboxes
+    id: scope
+    attributes:
+      label: Scope checks
+      options:
+        - label: I checked that this is not solely an upstream Codex Security issue.
+          required: true
+        - label: I understand that manifest validation does not prove model behavior.
+          required: true

@@ -1,0 +1,63 @@
+name: Bug report
+description: Report a reproducible problem in the Claude Code port
+title: "bug: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Do not include secrets or undisclosed vulnerabilities here; use SECURITY.md instead.
+  - type: input
+    id: claude-version
+    attributes:
+      label: Claude Code version
+      description: Output of `claude --version` or the exact package version.
+      placeholder: "2.x.x"
+    validations:
+      required: true
+  - type: dropdown
+    id: workflow
+    attributes:
+      label: Affected workflow
+      options:
+        - Marketplace installation
+        - Plugin discovery or loading
+        - Standard repository scan
+        - Deep repository scan
+        - Diff scan
+        - Supporting skill
+        - Finalizer or artifact contract
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: Provide the smallest safe sequence that reproduces the problem.
+      placeholder: |
+        1. Add the marketplace...
+        2. Install the plugin...
+        3. Invoke...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and logs
+      description: Remove credentials, private source code, and other sensitive data.
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: Operating system, Python version, Node.js version, installation method

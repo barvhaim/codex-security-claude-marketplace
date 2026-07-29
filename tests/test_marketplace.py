@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import struct
 import unittest
 from pathlib import Path
 
@@ -34,6 +35,7 @@ class MarketplaceTests(unittest.TestCase):
         )
 
         self.assertEqual(marketplace["name"], "njs-security-skills")
+        self.assertEqual(marketplace["owner"]["name"], "barvhaim")
         self.assertEqual(len(marketplace["plugins"]), 1)
         entry = marketplace["plugins"][0]
         self.assertEqual(entry["name"], plugin_manifest["name"])
@@ -77,6 +79,8 @@ class MarketplaceTests(unittest.TestCase):
             "schemas/coverage.schema.json",
             "scripts/finalize_scan_contract.py",
             "examples/completed-scan/scan-manifest.json",
+            "examples/completed-scan/report.md",
+            "examples/completed-scan/exports/results.sarif",
         ]:
             with self.subTest(path=relative):
                 self.assertTrue((PLUGIN / relative).is_file())
@@ -86,6 +90,37 @@ class MarketplaceTests(unittest.TestCase):
         self.assertFalse((PLUGIN / ".codex-plugin").exists())
         self.assertFalse((PLUGIN / "mcp").exists())
         self.assertFalse((PLUGIN / ".app.json").exists())
+
+    def test_public_launch_documentation_is_consistent(self) -> None:
+        readme = (ROOT / "README.md").read_text()
+        self.assertIn(
+            "/plugin marketplace add barvhaim/codex-security-claude-marketplace",
+            readme,
+        )
+        self.assertNotIn("access to the private repository", readme)
+        for relative in [
+            "CHANGELOG.md",
+            "CONTRIBUTING.md",
+            "SECURITY.md",
+            ".github/ISSUE_TEMPLATE/bug.yml",
+            ".github/ISSUE_TEMPLATE/feature.yml",
+            ".github/PULL_REQUEST_TEMPLATE.md",
+        ]:
+            with self.subTest(path=relative):
+                self.assertTrue((ROOT / relative).is_file())
+
+    def test_social_preview_has_github_dimensions(self) -> None:
+        data = (ROOT / "docs" / "social-preview.png").read_bytes()
+        self.assertEqual(data[:8], b"\x89PNG\r\n\x1a\n")
+        width, height = struct.unpack(">II", data[16:24])
+        self.assertEqual((width, height), (1280, 640))
+
+    def test_example_sarif_is_parseable(self) -> None:
+        sarif = json.loads(
+            (PLUGIN / "examples/completed-scan/exports/results.sarif").read_text()
+        )
+        self.assertEqual(sarif["version"], "2.1.0")
+        self.assertGreaterEqual(len(sarif["runs"]), 1)
 
 
 if __name__ == "__main__":

@@ -1,11 +1,13 @@
 # Jira Issues
 
+> Claude Code adaptation notice: this reference was adapted from OpenAI's Codex Security `track-findings` skill under Apache-2.0. Codex app links were replaced with capability-based Claude Code integration requirements.
+
 Use this reference only when the destination is `jira`.
 
 ## Contract
 
 - Track one validated finding or an explicitly selected batch of up to 25. Use one Jira Cloud issue per finding.
-- Use only the native [$atlassian](app://connector_692de805e3ec8191834719067174a384) app. Reuse needs read access but not write access. Create and update need both. Stop if the app is unavailable, disconnected, cannot read the destination, or cannot perform the approved mutation.
+- Use a configured Atlassian MCP server or Claude Code tool integration that exposes the required identity, project, issue metadata, search, mutation, and exact-readback capabilities. Reuse needs read access but not write access. Create and update need both. Stop if the integration is unavailable, disconnected, cannot read the destination, or cannot perform and verify the approved mutation.
 - Pin one authenticated Atlassian identity, site and `cloudId`, project key, and issue type from duplicate checks through readback. Use the same destination and issue type for every item in a batch. Start a separate run for work that needs another site, project, or issue type.
 - Require the user to explicitly confirm that the project audience is approved to see the finding details. One confirmation may cover an exact reviewed batch. Jira create permission does not prove who can read the issues.
 
@@ -13,7 +15,7 @@ Do not use the legacy Jira connector, Jira Data Center, Jira Service Management 
 
 ## Destination And Fields
 
-Call the Rovo tools in this order:
+Call the configured Atlassian integration's equivalent tools in this order. Tool names may differ, but every listed capability is required:
 
 1. Resolve the exact site with `getAccessibleAtlassianResources` and the current identity with `atlassianUserInfo`.
 2. Confirm the project permits the intended operation with `getVisibleJiraProjects`: `action: create` for a create, `edit` for an update, or `browse` for reuse.

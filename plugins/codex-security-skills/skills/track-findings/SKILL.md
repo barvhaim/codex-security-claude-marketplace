@@ -33,13 +33,13 @@ Jira mode is defined in:
 
 - `skills/track-findings/references/jira.md`
 
-Linear requires the native [$linear](app://asdk_app_69a089a326dc8191b32a3f2553f5be2c) app. Stop if it is unavailable or disconnected.
+Linear requires a configured Claude Code MCP server or tool integration that can identify the active account, resolve teams and projects, search issues, create or update one issue, and read the exact result back. Stop if those capabilities are unavailable or disconnected.
 
-Jira requires the native [$atlassian](app://connector_692de805e3ec8191834719067174a384) app. Reuse needs read access but not write access. Create and update need both. Stop if the app is unavailable, disconnected, cannot read the destination, or cannot perform the approved mutation. Do not fall back to a legacy Jira connector, CLI, direct REST, browser automation, or Computer Use.
+Jira requires a configured Atlassian MCP server or tool integration with the capabilities named in `references/jira.md`. Reuse needs read access; create and update need both read and write access. Stop if the provider cannot identify the account, read the destination, perform the approved mutation, and read the exact result back. Do not silently fall back to an unreviewed connector, direct REST, browser automation, or Computer Use.
 
-For GitHub, prefer the native [$github](app://connector_76869538009648d5b282a4bb21c3d157) app. The app is optional. Authenticated GitHub CLI (`gh`) access is also allowed, but only when the user explicitly chooses the current CLI identity and exact destination.
+For GitHub, authenticated GitHub CLI (`gh`) access is supported when the user explicitly chooses the current CLI identity and exact destination. A configured GitHub MCP integration is also acceptable only when it exposes equivalent identity, repository, issue, advisory, and readback capabilities.
 
-Never switch transports silently. If the app is unavailable, disconnected, or cannot reach the repository, validate the source first. Then show the active CLI account, hostname, exact repository, and live visibility. Ask to use that transport unless the current request already selects that same identity and destination. This keeps the credential and disclosure boundary explicit.
+Never switch transports silently. If the selected integration is unavailable, disconnected, or cannot reach the repository, validate the source first. Then show the available account, hostname, exact repository, and live visibility. Ask to use that transport unless the current request already selects that same identity and destination. This keeps the credential and disclosure boundary explicit.
 
 Do not substitute browser automation, Computer Use, copied search results, another provider, or direct HTTP calls. Keep `gh` scoped to preflight, duplicate discovery, approved tracking mutations, and exact readback. Never use it here to create repositories, change repository settings, alter app installation access, push source, or bypass repository or organization policy.
 

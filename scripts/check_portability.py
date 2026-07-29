@@ -10,6 +10,7 @@ FORBIDDEN = (
     "<python_command>",
     "<plugin_dir>",
     "/tmp/codex-security",
+    "app://",
 )
 HOST_CALLS = (
     "open_codex_security_workspace",

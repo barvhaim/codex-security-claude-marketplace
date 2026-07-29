@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/barvhaim/codex-security-claude-marketplace/security
+    about: Read SECURITY.md and use private vulnerability reporting when available.
+  - name: Upstream Codex Security
+    url: https://github.com/openai/codex-security
+    about: Report behavior that belongs to the original Codex Security project upstream.
